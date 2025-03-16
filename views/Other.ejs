@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .job-listings {
+            margin-top: 30px;
+        }
+        
+        .job-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);
+        }
+        
+        .search-filter {
+            border-radius: 8px;
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 2px 5px rgba(79, 70, 229, 0.1);
+        }
+        
+        .filter-button {
+            background-color: #4f46e5;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-button:hover {
+            background-color: #4338ca;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <nav class="bg-white shadow-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex-shrink-0">
+                        <img class="h-8 w-auto" src="/Assets/cuvette.png" alt="Cuvette">
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <div class="ml-4 flex items-center">
+                        <div class="flex items-center border border-gray-300 rounded-lg py-1 px-3">
+                            <img class="h-8 w-8 rounded-full" src="/Assets/user.png" alt="Profile">
+                            <span class="ml-2 text-sm font-medium text-gray-700">User</span>
+                            <svg class="ml-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-gray-200 h-screen" style="position: fixed;">
+            <nav class="mt-5 px-2">
+                <a href="/full-time" class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+                    <svg class="mr-4 h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    Fulltime Jobs
+                </a>
+                <a href="/other" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-indigo-600 bg-gray-100">
+                    <svg class="mr-4 h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+                    </svg>
+                    Other Jobs
+                    <span class="ml-auto inline-block py-0.5 px-2 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                        New
+                    </span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main content area -->
+        <main class="flex-1 p-10 ml-64">
+            <h1 class="text-2xl font-semibold">Other Job Opportunities</h1>
+            
+            <!-- Search and Filter Section -->
+            <div class="mt-6">
+                <form action="/submit-other" method="POST" class="search-filter bg-white p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label for="search" class="block text-sm font-medium text-gray-700">Search Company</label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <input type="text" name="search" id="search" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-3 pr-12 py-2 sm:text-sm border border-gray-300 rounded-md" placeholder="Company name...">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="officetype" class="block text-sm font-medium text-gray-700">Office Type</label>
+                            <select id="officetype" name="officetype" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option value="">All</option>
+                                <option value="remote">Remote/Hybrid</option>
+                                <option value="office">In-office</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="salary" class="block text-sm font-medium text-gray-700">Max Stipend</label>
+                            <div class="mt-1">
+                                <input type="range" id="salary" name="salary" min="0" max="100000" step="1000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                                <div class="flex justify-between text-xs text-gray-600 mt-1">
+                                    <span>₹0</span>
+                                    <span id="salaryValue">₹50,000</span>
+                                    <span>₹100,000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 flex justify-end">
+                        <button type="submit" class="filter-button text-white px-4 py-2 rounded-md">
+                            Apply Filters
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Job Listings - Modified to show only 3 jobs -->
+            <div class="job-listings">
+                <% if (typeof companyData !== 'undefined' && companyData.length > 0) { %>
+                    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                        <% 
+                           // Limit to only 3 jobs
+                           const limitedJobs = companyData.slice(0, 3);
+                           limitedJobs.forEach(company => { 
+                        %>
+                            <div class="job-card bg-white overflow-hidden shadow rounded-lg">
+                                <div class="p-6">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-16 w-16 bg-gray-100 rounded-md flex items-center justify-center">
+                                            <% if (company.logo) { %>
+                                                <img src="<%= company.logo %>" alt="<%= company.companyname %> logo" class="h-12 w-12 object-contain">
+                                            <% } else { %>
+                                                <span class="text-2xl font-bold text-indigo-500"><%= company.companyname.charAt(0) %></span>
+                                            <% } %>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h3 class="text-lg font-semibold"><%= company.companyname %></h3>
+                                            <p class="text-sm text-gray-600"><%= company.position %></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 text-xs font-medium rounded-full bg-indigo-100 text-indigo-800">
+                                                <%= company.modetype %>
+                                            </span>
+                                            <span class="px-2 py-1 text-xs font-medium rounded-full bg-purple-100 text-purple-800">
+                                                <%= company.experience %>
+                                            </span>
+                                            <span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                                                <%= company.jobtype || "Part-time" %>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4 grid grid-cols-2 gap-4">
+                                        <div>
+                                            <h4 class="text-xs font-medium text-gray-500">STIPEND</h4>
+                                            <p class="mt-1 text-sm font-medium"><%= company.offer %></p>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xs font-medium text-gray-500">LOCATION</h4>
+                                            <p class="mt-1 text-sm font-medium"><%= company.city %></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-5">
+                                        <% if (company.apply) { %>
+                                            <a href="<%= company.apply %>" target="_blank" class="inline-flex items-center justify-center px-4 py-2 border border-indigo-600 text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50">
+                                                Apply Now
+                                            </a>
+                                        <% } else { %>
+                                            <button disabled class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-400 bg-gray-50 cursor-not-allowed">
+                                                Apply Unavailable
+                                            </button>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </div>
+                    
+                    <% if (companyData.length > 3) { %>
+                        <div class="text-center mt-8">
+                 
+                        </div>
+                    <% } %>
+                <% } else { %>
+                    <div class="bg-white shadow rounded-lg p-6 mt-6 text-center">
+                        <p class="text-lg font-medium text-gray-600">No job opportunities found matching your criteria.</p>
+                        <p class="text-sm text-gray-500 mt-2">Try adjusting your filters or check back later for new opportunities.</p>
+                    </div>
+                <% } %>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const salarySlider = document.getElementById('salary');
+            const salaryValue = document.getElementById('salaryValue');
+            
+            if (salarySlider && salaryValue) {
+                salarySlider.addEventListener('input', function() {
+                    salaryValue.textContent = '₹' + parseInt(this.value).toLocaleString();
+                });
+            }
+            
+            const links = {
+                home: "/",
+                fullTime: "/full-time",
+                other: "/other"
+            };
+        });
+    </script>
+</body>
+</html>

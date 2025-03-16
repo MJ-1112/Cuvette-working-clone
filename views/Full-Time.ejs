@@ -6,94 +6,355 @@
     <title>Cuvette - Job Search</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-    .job1{
-    display: flex;
-    grid-column: auto;
-    align-items: center;
-    width: 700px;
-    height: 200px;
-    border: 2px solid black;
-    box-shadow: 8px 8px #d3d3d3;
-    position: relative;
-    top: 50px;
-    left: 0px;
-    border-radius: 7px;
-    background-color: beige;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.cmpname{
-    font-size: 19px;
-    position: relative;
-    top: -40px;
-    left: 50px;
-    font-weight: 500;
-    width: 500px;
-}
-.jbtype{
-    font-size: 22px;
-    position: relative;
-    top:-70px;
-    font-weight: 600;
-    left: -150px;
-    width: 700px;
-}
-.city{
-    font-size: 16px;
-    position: relative;
-    top: 20px;
-    right: 300px;
-    width: 300px;
+        .job-card {
+            border: 2px solid #333;
+            box-shadow: 8px 8px #d3d3d3;
+            border-radius: 7px;
+            background-color: beige;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .company-name {
+            font-size: 19px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .job-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .job-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+        }
+        
+        .filter-box {
+            width: 320px;
+            border-radius: 7px;
+            border: 1px solid #333;
+            background-color: white;
+            padding: 20px;
+        }
+        
+        .filter-title {
+            font-weight: 600;
+            margin: 15px 0 10px;
+        }
+        
+        .filter-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .radio-group {
+            margin-bottom: 15px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .radio-option input {
+            margin-right: 8px;
+        }
+        
+        .search-btn {
+            width: 100%;
+            padding: 8px;
+            background-color: #438AF6;
+            color: white;
+            border-radius: 7px;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        .search-btn:hover {
+            background-color: #3272d9;
+        }
+        
+        .apply-btn {
+            display: inline-block;
+            background-color: #438AF6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+        
+        .apply-btn:hover {
+            background-color: #3272d9;
+        }
+        
+        .apply-btn-disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .experience-select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .range-value {
+            text-align: right;
+            font-size: 14px;
+            margin-top: 5px;
+        }
 
-}
-.mode-type{
-    font-size: 16px;
-    position: relative;
-    top: -70px;
-    right: -100px;
-    width: 300px;
-    
-}
-#mode{
-    font-weight: 600;
-}
-#md{
-    font-weight: 200;
-}
-.flex-1{
-    position: relative;
-    top: 10px;
-    left: 200px;
-}
-form{
-    position: fixed;
-    top: 150px;
-    right: 10px;
-}
-.searchy{
-    width: 320px;
-    height: 400px;
-    border-radius: 7px;
-    border: 1px solid black ;
-    position: fixed;
-    top: 150px;
-    right: -1px;
-}
+        /* Converted Tailwind to CSS for main section */
+        body {
+            font-family: sans-serif;
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        nav .container {
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            nav .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            nav .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        nav .nav-content {
+            display: flex;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        nav .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .logo {
+            flex-shrink: 0;
+        }
+
+        nav .logo img {
+            height: 2rem;
+            width: auto;
+        }
+
+        nav .profile-container {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .profile {
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+
+        nav .profile img {
+            height: 2rem;
+            width: 2rem;
+            border-radius: 9999px;
+        }
+
+        nav .profile span {
+            margin-left: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        nav .profile svg {
+            margin-left: 0.5rem;
+            height: 1.25rem;
+            width: 1.25rem;
+            color: #9ca3af;
+        }
+
+        aside {
+            width: 16rem;
+            background-color: white;
+            border-right: 1px solid #e5e7eb;
+            height: 100vh;
+            position: fixed;
+        }
+
+        aside nav {
+            margin-top: 1.25rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+        aside .active-link {
+            display: flex;
+            align-items: center;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            font-weight: 500;
+            border-radius: 0.375rem;
+            color: #2563eb;
+            background-color: #f3f4f6;
+        }
+
+        aside .inactive-link {
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            font-weight: 500;
+            border-radius: 0.375rem;
+            color: #4b5563;
+        }
+
+        aside .inactive-link:hover {
+            color: #111827;
+            background-color: #f9fafb;
+        }
+
+        aside .link-icon {
+            margin-right: 1rem;
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        aside .active-link .link-icon {
+            color: #2563eb;
+        }
+
+        aside .inactive-link .link-icon {
+            color: #9ca3af;
+        }
+
+        aside .inactive-link:hover .link-icon {
+            color: #6b7280;
+        }
+
+        aside .badge {
+            margin-left: auto;
+            display: inline-block;
+            padding-top: 0.125rem;
+            padding-bottom: 0.125rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        main {
+            margin-left: 16rem;
+            padding: 2.5rem;
+            flex: 1;
+        }
+
+        main h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        main .content-container {
+            display: flex;
+            margin-top: 2.5rem;
+        }
+
+        main .job-list-container {
+            width: 66.666667%;
+            padding-right: 2rem;
+        }
+
+        main .filter-container {
+            width: 33.333333%;
+        }
+
+        main .sticky-filter {
+            position: sticky;
+            top: 6rem;
+        }
+
+        main .empty-state {
+            text-align: center;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            background-color: #f9fafb;
+            border-radius: 0.375rem;
+        }
+
+        main .empty-state-text {
+            color: #6b7280;
+        }
     </style>
-    
 </head>
 <body class="font-sans">
     <nav class="bg-white shadow-md border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="#" class="flex-shrink-0">
-                        <img class="h-8 w-auto" src="Assets\cuvette.png" alt="Cuvette" onclick="clicker()">
+                    <a href="/" class="flex-shrink-0">
+<img class="h-8 w-auto" src="/Assets/cuvette.png" alt="Cuvette">
+
+
                     </a>
                 </div>
                 <div class="flex items-center">
                     <div class="ml-4 flex items-center">
                         <div class="flex items-center border border-gray-300 rounded-lg py-1 px-3">
-                            <img class="h-8 w-8 rounded-full" src="Assets\user.png" alt="Profile">
+<img class="h-8 w-8 rounded-full" src="Assets\user.png" alt="Profile">
+
+
                             <span class="ml-2 text-sm font-medium text-gray-700">User</span>
                             <svg class="ml-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -107,94 +368,117 @@ form{
 
     <div class="flex">
         <!-- Sidebar -->
-        <aside class="w-640 bg-white border-r border-gray-120000 h-screen" style="position: fixed;">
+        <aside class="w-64 bg-white border-r border-gray-200 h-screen fixed">
             <nav class="mt-5 px-2">
-                <a href="#" class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-blue-600 bg-gray-100">
+                <a href="/full-time" class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-blue-600 bg-gray-100">
                     <svg class="mr-4 h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                     </svg>
                     Fulltime Jobs
                 </a>
-                <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50" >
+                <a href="/other" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50">
                     <svg class="mr-4 h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
                     </svg>
-                    <button onclick="clickbood()">Other Jobs</button>
+                    Other Jobs
                     <span class="ml-auto inline-block py-0.5 px-2 text-xs font-medium rounded-full bg-green-100 text-green-800">
                         New
                     </span>
                 </a>
-                <!-- <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50" onclick="clickboode()">
-                    <svg class="mr-4 h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                    </svg>
-                    Applied
-                </a> -->
             </nav>
         </aside>
 
         <!-- Main content area -->
-        <main class="flex-1 p-10">
+        <main class="ml-64 p-10 flex-1">
             <h1 class="text-2xl font-semibold">Job Listings</h1>
             
-            <!-- Job listings with proper spacing -->
-            <div class="flex flex-col space-y-20 mt-10">
-                <% if (companyData && companyData.length > 0) { %>
-                    <% for(var i = 0; i < companyData.length; i++) { %>
-                        <div class="job1">
-                            <div class="cmpname">
-                                <span id="cmp"><%= companyData[i].companyname || 'Company Name' %></span>
+            <div class="flex mt-10">
+                <!-- Job listings -->
+                <div class="w-2/3 pr-8">
+                    <% if (companyData && companyData.length > 0) { %>
+                        <% for(var i = 0; i < 3; i++) { %>
+                            <div class="job-card">
+                                <div class="company-name">
+                                    <%= companyData[i].companyname || 'Company Name' %>
+                                </div>
+                                <div class="job-title">
+                                    <%= companyData[i].jobtype || 'Job Type' %>
+                                </div>
+                                <div class="job-details">
+                                    <div>
+                                        <span class="detail-label">City:</span> <%= companyData[i].city || 'Bengaluru' %>
+                                    </div>
+                                    <div>
+                                        <span class="detail-label">Mode:</span> <%= companyData[i].modetype || 'In-office' %>
+                                    </div>
+                                    <div>
+                                        <span class="detail-label">Offer:</span> <%= companyData[i].offer || '2 LPA' %>
+                                    </div>
+                                    <div>
+                                        <span class="detail-label">Experience:</span> <%= companyData[i].experience || '0-2 years' %>
+                                    </div>
+                                </div>
+                                <div>
+                                    <% if (companyData[i].apply) { %>
+                                        <a href="<%= companyData[i].apply %>" target="_blank" class="apply-btn">Apply Now</a>
+                                    <% } else { %>
+                                        <span class="apply-btn apply-btn-disabled">Application Unavailable</span>
+                                    <% } %>
+                                </div>
                             </div>
-                            <div class="jbtype">
-                                <span id="jb"><%= companyData[i].jobtype || 'Job Type' %></span>
-                            </div>
-                            <div class="city">
-                                <span id="ct">City: <span><%= companyData[i].city || 'Bengaluru' %></span></span>
-                            </div>
-                            <div class="mode-type">
-                                <span id="mode">Mode: <span id="md"><%= companyData[i].modetype || 'In-office' %></span></span>
-                            </div>
-                            <div class="offer">
-                                <span id="offer">Offer: <span><%= companyData[i].offer || '2 LPA' %></span></span>
-                            </div>
-                            <div class="exp">
-                                <span id="exp">Experience: <span><%= companyData[i].experience || '0-2 years' %></span></span>
-                            </div>
+                        <% } %>
+                    <% } else { %>
+                        <div class="empty-state">
+                            <p class="empty-state-text">No job listings available at the moment.</p>
                         </div>
                     <% } %>
-                <% } else { %>
-                    <div class="text-center py-10">
-                        <p class="text-gray-500">No job listings available at the moment.</p>
+                </div>
+                
+                <!-- Filters -->
+                <div class="filter-container">
+                    <div class="filter-box sticky-filter">
+                        <form action="/submit" method="POST" id="filter-form">
+                            <h3 class="font-semibold mb-2">Filter Jobs</h3>
+                            
+                            <input type="text" name="search" placeholder="Search Company" class="filter-input">
+                            
+                            <div class="filter-title">Office Type</div>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" name="officetype" id="in-office" value="in-office" checked>
+                                    <label for="in-office">In-Office</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="officetype" id="remote" value="remote">
+                                    <label for="remote">Remote/Hybrid</label>
+                                </div>
+                            </div>
+                            
+
+                            
+                            <div class="filter-title">Salary Range</div>
+                            <input type="range" name="salary" min="2" max="50" value="5" class="w-full" id="salary-slider">
+                            <div class="range-value">₹<span id="salary-value">5</span> LPA</div>
+                            
+                            <button type="submit" class="search-btn">Apply Filters</button>
+                        </form>
                     </div>
-                <% } %>
-            </div>
-            <div class="searchy">
-                <form action="/submit" method="POST">
-                    <input type="text" name="search" placeholder="Search Company" style="position: fixed; top: 170px; right: 10px; width: 300px; border: 2px solid grey;">
-                    <label for="type" style="position: fixed; top: 220px; right: 200px; font-weight: 600;">Office Type</label>
-                    <input type="radio" style="position: fixed; top: 255px; right: 280px;" checked ><option value="op1" style="position: fixed; top: 245px; right: 200px;" >In-Office</option>
-                    <input type="radio" style="position: fixed; top: 255px; right: 150px;"><option value="op2" style="position: fixed; top: 245px; right: 30px;" >Remote/Hybrid</option>
-                    <input type="submit" value = "Search" style="position: fixed; top: 300px; right: 100px; border: 1px solid; width: 150px; border-radius: 7px;">
-                </form>
-
-            </div>
-        </main>
-    </div>
-    <script >
-        function clicker(){
-    window.location.href = "main.html";
-}
-function clickboo(){
-    window.location.href = "Full-Time.html";
-}
-function clickbood(){
-    window.location.href = "Other.html";
-}
-function clickboode(){
-    window.location.href = "Applied.html";
-}
-
-
-    </script>
-</body>
-</html>
+                </div>
+            </main>
+        </div>
+        
+        <script>
+            // Update salary value display when slider moves
+            const salarySlider = document.getElementById('salary-slider');
+            const salaryValue = document.getElementById('salary-value');
+            
+            salarySlider.addEventListener('input', function() {
+                salaryValue.textContent = this.value;
+            });
+            
+            document.getElementById('filter-form').addEventListener('submit', function(e) {
+                // Form submission is handled by the server
+            });
+        </script>
+    </body>
+    </html>
