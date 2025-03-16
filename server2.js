@@ -18,6 +18,16 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "Assets")));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+const getDbPool = () => {
+    return new pg.Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+      // Set shorter connection timeout
+      connectionTimeoutMillis: 5000,
+      // Limit how many connections to create at once
+      max: 1
+    });
+  };
 
 // Database connection
 const dbConfig = process.env.DATABASE_URL 
@@ -31,6 +41,18 @@ const dbConfig = process.env.DATABASE_URL
     };
 
 const db = new pg.Client(dbConfig);
+app.get("/full-time", async (req, res) => {
+    const db = getDbPool();
+    try {
+        const result = await db.query("SELECT * FROM companydetails");
+        res.render("Full-Time", { companyData: result.rows });
+    } catch (err) {
+        console.error("Error fetching full-time jobs:", err);
+        res.render("Full-Time", { companyData: [] });
+    } finally {
+        db.end(); // Important: release the pool
+    }
+});
 
 // Routes
 app.get("/", (req, res) => {
