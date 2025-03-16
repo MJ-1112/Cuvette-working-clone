@@ -1,9 +1,8 @@
 import express from "express";
-import bodyParser from "body-parser";
-import pg from "pg";
-import app from './server2.js';
 import dotenv from 'dotenv';
+import app from './server2.js';
 
+// Load environment variables
 dotenv.config();
 
 const port = process.env.PORT || 8000;
