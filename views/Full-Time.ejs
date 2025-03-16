@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuvette - Job Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    .job1{
+    display: flex;
+    grid-column: auto;
+    align-items: center;
+    width: 700px;
+    height: 200px;
+    border: 2px solid black;
+    box-shadow: 8px 8px #d3d3d3;
+    position: relative;
+    top: 50px;
+    left: 0px;
+    border-radius: 7px;
+    background-color: beige;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.cmpname{
+    font-size: 19px;
+    position: relative;
+    top: -40px;
+    left: 50px;
+    font-weight: 500;
+    width: 500px;
+}
+.jbtype{
+    font-size: 22px;
+    position: relative;
+    top:-70px;
+    font-weight: 600;
+    left: -150px;
+    width: 700px;
+}
+.city{
+    font-size: 16px;
+    position: relative;
+    top: 20px;
+    right: 300px;
+    width: 300px;
+
+}
+.mode-type{
+    font-size: 16px;
+    position: relative;
+    top: -70px;
+    right: -100px;
+    width: 300px;
+    
+}
+#mode{
+    font-weight: 600;
+}
+#md{
+    font-weight: 200;
+}
+.flex-1{
+    position: relative;
+    top: 10px;
+    left: 200px;
+}
+form{
+    position: fixed;
+    top: 150px;
+    right: 10px;
+}
+.searchy{
+    width: 320px;
+    height: 400px;
+    border-radius: 7px;
+    border: 1px solid black ;
+    position: fixed;
+    top: 150px;
+    right: -1px;
+}
+    </style>
+    
+</head>
+<body class="font-sans">
+    <nav class="bg-white shadow-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0">
+                        <img class="h-8 w-auto" src="Assets\cuvette.png" alt="Cuvette" onclick="clicker()">
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <div class="ml-4 flex items-center">
+                        <div class="flex items-center border border-gray-300 rounded-lg py-1 px-3">
+                            <img class="h-8 w-8 rounded-full" src="Assets\user.png" alt="Profile">
+                            <span class="ml-2 text-sm font-medium text-gray-700">User</span>
+                            <svg class="ml-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-640 bg-white border-r border-gray-120000 h-screen" style="position: fixed;">
+            <nav class="mt-5 px-2">
+                <a href="#" class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-blue-600 bg-gray-100">
+                    <svg class="mr-4 h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    Fulltime Jobs
+                </a>
+                <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50" >
+                    <svg class="mr-4 h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+                    </svg>
+                    <button onclick="clickbood()">Other Jobs</button>
+                    <span class="ml-auto inline-block py-0.5 px-2 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                        New
+                    </span>
+                </a>
+                <!-- <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50" onclick="clickboode()">
+                    <svg class="mr-4 h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    Applied
+                </a> -->
+            </nav>
+        </aside>
+
+        <!-- Main content area -->
+        <main class="flex-1 p-10">
+            <h1 class="text-2xl font-semibold">Job Listings</h1>
+            
+            <!-- Job listings with proper spacing -->
+            <div class="flex flex-col space-y-20 mt-10">
+                <% if (companyData && companyData.length > 0) { %>
+                    <% for(var i = 0; i < companyData.length; i++) { %>
+                        <div class="job1">
+                            <div class="cmpname">
+                                <span id="cmp"><%= companyData[i].companyname || 'Company Name' %></span>
+                            </div>
+                            <div class="jbtype">
+                                <span id="jb"><%= companyData[i].jobtype || 'Job Type' %></span>
+                            </div>
+                            <div class="city">
+                                <span id="ct">City: <span><%= companyData[i].city || 'Bengaluru' %></span></span>
+                            </div>
+                            <div class="mode-type">
+                                <span id="mode">Mode: <span id="md"><%= companyData[i].modetype || 'In-office' %></span></span>
+                            </div>
+                            <div class="offer">
+                                <span id="offer">Offer: <span><%= companyData[i].offer || '2 LPA' %></span></span>
+                            </div>
+                            <div class="exp">
+                                <span id="exp">Experience: <span><%= companyData[i].experience || '0-2 years' %></span></span>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } else { %>
+                    <div class="text-center py-10">
+                        <p class="text-gray-500">No job listings available at the moment.</p>
+                    </div>
+                <% } %>
+            </div>
+            <div class="searchy">
+                <form action="/submit" method="POST">
+                    <input type="text" name="search" placeholder="Search Company" style="position: fixed; top: 170px; right: 10px; width: 300px; border: 2px solid grey;">
+                    <label for="type" style="position: fixed; top: 220px; right: 200px; font-weight: 600;">Office Type</label>
+                    <input type="radio" style="position: fixed; top: 255px; right: 280px;" checked ><option value="op1" style="position: fixed; top: 245px; right: 200px;" >In-Office</option>
+                    <input type="radio" style="position: fixed; top: 255px; right: 150px;"><option value="op2" style="position: fixed; top: 245px; right: 30px;" >Remote/Hybrid</option>
+                    <input type="submit" value = "Search" style="position: fixed; top: 300px; right: 100px; border: 1px solid; width: 150px; border-radius: 7px;">
+                </form>
+
+            </div>
+        </main>
+    </div>
+    <script >
+        function clicker(){
+    window.location.href = "main.html";
+}
+function clickboo(){
+    window.location.href = "Full-Time.html";
+}
+function clickbood(){
+    window.location.href = "Other.html";
+}
+function clickboode(){
+    window.location.href = "Applied.html";
+}
+
+
+    </script>
+</body>
+</html>
